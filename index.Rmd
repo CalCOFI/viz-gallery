@@ -1,14 +1,10 @@
 ---
-title: "CalCOFI Data Visualization Gallery"
-author: "Ben Best"
-date: "12/1/2021"
-output:
-  html_document:
-    code_folding: hide
+pagetitle: "CalCOFI Data Visualization Gallery"
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = T, warning = F, message = F)
+knitr::opts_chunk$set(echo = F, warning = F, message = F)
 ```
 
 ```{r, eval=T}
@@ -37,6 +33,7 @@ read_csv(here("figures.csv")) %>%
     state = list(
       labels = c(
         "type", "region",
+        "source", "source_link",
         "caption_md")))
 ```
 
