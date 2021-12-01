@@ -1,0 +1,42 @@
+---
+title: "CalCOFI Data Visualization Gallery"
+author: "Ben Best"
+date: "12/1/2021"
+output:
+  html_document:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T, warning = F, message = F)
+```
+
+```{r, eval=T}
+librarian::shelf(
+  dplyr, fs, glue, here, readr, trelliscopejs)
+
+# pok <- read.csv("https://raw.githubusercontent.com/hafen/pokRdex/master/pokRdex_mod.csv") %>%
+#   mutate_at(vars(matches("_id$")), as.character)
+# 
+# pok %>%
+#   mutate(panel = img_panel(url_image)) %>%
+#   trelliscope(
+#     "pokemon", nrow = 3, ncol = 6,
+#     state = list(labels = c("pokemon", "pokedex")),
+#     path=".")
+
+dir_delete("appfiles")
+
+read_csv(here("figures.csv")) %>%
+  mutate(
+    panel = img_panel_local(rel_path)) %>%
+  trelliscope(
+    "CalCOFI Data Visualization Gallery", 
+    ncol = 2,
+    path = ".",
+    state = list(
+      labels = c(
+        "type", "region",
+        "caption_md")))
+```
+
